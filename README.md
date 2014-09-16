@@ -17,8 +17,8 @@ Getting Started
 
 Create the Rails application
 
-{{{
+```
 rails new ang3_app --database=postgresql --skip-test-unit
 echo "2.1.0" > ang3_app/.ruby-version
 cd ang3_app
-}}}
+```
