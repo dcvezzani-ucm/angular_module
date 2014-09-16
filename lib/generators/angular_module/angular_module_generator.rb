@@ -16,6 +16,8 @@ class AngularModuleGenerator < Rails::Generators::NamedBase
     # @verbose = args.include?("verbose:true")
     @_messages = []
     @_current_dir = File.dirname(__FILE__)
+
+    @_port = "8000"
   end
 
   def bower_json
@@ -31,6 +33,43 @@ class AngularModuleGenerator < Rails::Generators::NamedBase
       cp(file, out_file)
     rescue => e
       raise AngularModuleGeneratorError.new("Unable to bootstrap #{file}", e)
+    end
+  end
+
+  def angular_deploy
+    # vendor/assets/angular-deploy.sh
+
+#%s/lib\/generators\/angular_module/#{@_current_dir}/gc
+
+
+    file = "#{@_current_dir}/templates/vendor/assets/angular-deploy.sh"
+    begin
+      out_file = file.gsub(/^.+\/templates\//, "")
+      # out_file = file.gsub(/\/templates\//, "\/out\/")
+      cp(file, out_file)
+    rescue => e
+      raise AngularModuleGeneratorError.new("Unable to bootstrap #{file}", e)
+    end
+  end
+
+  def start_open_scripts
+    file = "tmp/port.txt"
+    if(File.exists?(file))
+      @_port = IO.read(file).strip
+    else
+      @_port = ask("What port will this web application be using?")
+      File.open("tmp/port.txt", "w"){|f| f.write(@_port)}
+    end
+  
+    file = "./start.sh"
+    unless(File.exists?(file))
+      File.open("open.sh", "w"){|f| f.write("open http://localhost:#{@_port}")}
+      FileUtils.chmod 0755, "./open.sh", verbose: true
+
+      File.open(file, "w"){|f| f.write("#GMAIL_USERNAME=asdf GMAIL_PASSWORD=asdf RAILS_ENV=development bundle exec rails s -p #{@_port}\nRAILS_ENV=development bundle exec rails s -p #{@_port}")}
+      FileUtils.chmod 0755, file, verbose: true
+    else
+      say_status :exist, file, :blue
     end
   end
 
@@ -252,23 +291,7 @@ RUBY
 
       content = IO.read(file)
       unless(content =~ re_after_append_asset_paths or content =~ re_config_assets_precompile)
-        msg = <<-EOL
-  missing tokens in #{file}; fix first before adding another AngularJS module
-
-  e.g., 
-
-      initializer :after_append_asset_paths, 
-                  :group => :all, 
-                  :after => :append_assets_path do
-
-  >>>   # DO NOT REMOVE: config.assets.paths.unshift
-        config.assets.paths.unshift Rails.root.join("vendor", "assets", "angular").to_s
-      end
-
-  >>> # DO NOT REMOVE: config.assets.precompile
-      config.assets.precompile += ['angular.js', 'angular.css']
-  EOL
-        raise AngularModuleGeneratorError.new(msg)
+        application IO.read("#{@_current_dir}/templates/config/module_assets_paths.rb")
       end
 
       out_file = file
@@ -346,7 +369,7 @@ RUBY
         content.gsub!(/{module-singular}/, @_module_singular)
         content.gsub!(/{module-capitalized}/, @_module_capitalized)
         content.gsub!(/{module}/, @_module)
-        content.gsub!(/{port}/, '3640')
+        content.gsub!(/{port}/, @_port)
 
         out_dir = File.dirname(out_file)
         mkdir_p(out_dir)

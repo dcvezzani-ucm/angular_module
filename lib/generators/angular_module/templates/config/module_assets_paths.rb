@@ -1,4 +1,4 @@
-    initializer :after_append_asset_paths, 
+initializer :after_append_asset_paths, 
                 :group => :all, 
                 :after => :append_assets_path do
 
