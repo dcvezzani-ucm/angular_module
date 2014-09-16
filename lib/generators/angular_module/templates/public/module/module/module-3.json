@@ -1,0 +1,12 @@
+{
+    "name": "{module-capitalized} 3", 
+    "description": "Three {module} to grow on", 
+    "id": "{module-singular}-3", 
+    "order": "1", 
+    "images": [
+        "/{module}/img/{module}/{module-singular}-3.0.jpg", 
+        "/{module}/img/{module}/{module-singular}-3.1.jpg", 
+        "/{module}/img/{module}/{module-singular}-3.2.jpg"
+    ]
+}
+

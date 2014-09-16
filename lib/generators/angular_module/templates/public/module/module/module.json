@@ -1,0 +1,23 @@
+[
+    {
+        "order": 3, 
+        "id": "{module-singular}-1", 
+        "imageUrl": "/{module}/img/{module}/{module-singular}-1.0.jpg", 
+        "name": "{module-capitalized} 1", 
+        "description": "One {module-singular} to grow on"
+    }, 
+    {
+        "order": 2, 
+        "id": "{module-singular}-2", 
+        "imageUrl": "/{module}/img/{module}/{module-singular}-2.0.jpg", 
+        "name": "{module-capitalized} 2", 
+        "description": "Two {module} to grow on"
+    }, 
+    {
+        "order": 1, 
+        "id": "{module-singular}-3", 
+        "imageUrl": "/{module}/img/{module}/{module-singular}-3.0.jpg", 
+        "name": "{module-capitalized} 3", 
+        "description": "Three {module} to grow on"
+    }
+]

@@ -1,0 +1,11 @@
+{
+    "name": "{module-capitalized} 2", 
+    "description": "Two {module} to grow on", 
+    "id": "{module-singular}-2", 
+    "order": "2", 
+    "images": [
+        "/{module}/img/{module}/{module-singular}-2.0.jpg", 
+        "/{module}/img/{module}/{module-singular}-2.1.jpg", 
+        "/{module}/img/{module}/{module-singular}-2.2.jpg"
+    ]
+}

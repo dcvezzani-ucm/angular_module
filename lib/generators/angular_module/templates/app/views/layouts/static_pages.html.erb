@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html class="ng-scope" ng-app="<%=@angular_app_name%>">
+<head>
+  <title>Angular Project</title>
+  <%= stylesheet_link_tag    "angular", media: "all" %>
+  <%= javascript_include_tag "angular" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<div class="view-container">
+<div class="view-frame ng-scope" ng-view=""><%= yield %></div>
+</div>
+
+</body>
+</html>

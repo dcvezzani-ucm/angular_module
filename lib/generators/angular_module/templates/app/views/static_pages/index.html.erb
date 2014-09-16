@@ -1,0 +1,8 @@
+<% if !@public_methods.nil? %>
+<ul>
+  <% @public_methods.each do |m| %>
+  <li><a href="/<%= m %>#/list"><%= m %></a></li>
+  <% end %>
+</ul>
+<% end %>
+

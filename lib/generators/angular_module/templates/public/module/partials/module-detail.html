@@ -1,0 +1,33 @@
+<div class="{module-singular}-images">
+  <img ng-src="{{img}}"
+       class="{module-singular}"
+       ng-repeat="img in {module-singular}.images"
+       ng-class="{active: mainImageUrl==img}">
+</div>
+
+<h1>{{{module-singular}.name}}</h1>
+
+<p>{{{module-singular}.description}}</p>
+
+<ul class="{module-singular}-thumbs">
+  <li ng-repeat="img in {module-singular}.images">
+    <img ng-src="{{img}}" ng-click="setImage(img)">
+  </li>
+</ul>
+
+<ul class="specs">
+  <li>
+    <span>Images</span>
+    <dl>
+      <dt>List</dt>
+      <dd ng-repeat="image in {module-singular}.images">{module}/{{image}}</dd>
+    </dl>
+  </li>
+  <li>
+    <span>Priority</span>
+    <dl>
+      <dt>Order</dt>
+      <dd>{{{module-singular}.order}}</dd>
+    </dl>
+  </li>
+</ul>
