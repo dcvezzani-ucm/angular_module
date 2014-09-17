@@ -505,5 +505,5 @@ Part of the fun of this endeavor was to learn how to use Rails generators
 * http://api.rubyonrails.org/classes/Rails/Generators/Base.html
 * http://rubydoc.info/github/wycats/thor/master/Thor/Shell/Basic (~/.rvm/gems/ruby-2.1.0/gems/thor-0.19.1/lib/thor/shell/basic.rb)
 
-I used real words instead of simply using Lorem Ipsum
+I used real words instead of simply using Lorem Ipsum for seeding the Wiget data.
 * http://users.tinyonline.co.uk/gswithenbank/unuwords.htm
