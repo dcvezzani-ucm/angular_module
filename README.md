@@ -153,6 +153,9 @@ npm run protractor-pens
 Use the Database Instead of the File System
 ===========================================
 
+Generate the RESTful service
+===========================================
+
 ```
 rails generate scaffold widget name:string
 ```
@@ -262,6 +265,9 @@ Seed the database
 rake db:seed
 ```
 
+Detach the Static Files; Use the Database
+===========================================
+
 Remove static widget data
 
 ```
@@ -321,6 +327,10 @@ Restart the server and navigate to the widget Angular JS module.
 
 The list shows up, but there aren't any pictures.  Let's fix that, assuming you already have a collection of images that you will associate with the Widget records.
 
+
+Add Images
+===========================================
+
 Add an ```imageUrl``` column to the table.
 
 ```
@@ -374,6 +384,8 @@ json.extract! @widget, :id, :name, :imageUrl, :created_at, :updated_at
 
 Restart the server and navigate to the widget Angular JS module.  The images should be showing up now.  Select one of the entries.  Where are the images?  We can get them with a few more changes.
 
+Add Images to the Detail View
+===========================================
 
 [app/assets/widgets/widgets/javascripts/services.js]
 
