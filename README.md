@@ -484,7 +484,7 @@ Credits
 
 Much of the framework and examples (especially the unit test and e2e examples) came from here.
 
-https://www.honeybadger.io/blog/2013/12/11/beginners-guide-to-angular-js-rails
+* https://www.honeybadger.io/blog/2013/12/11/beginners-guide-to-angular-js-rails
 
 Part of the fun of this endeavor was to learn how to use Rails generators
 
