@@ -63,7 +63,7 @@ class AngularModuleGenerator < Rails::Generators::NamedBase
   
     file = "./start.sh"
     unless(File.exists?(file))
-      File.open("open.sh", "w"){|f| f.write("open http://localhost:#{@_port}")}
+      File.open("open.sh", "w"){|f| f.write("#!/bin/bash\n\nif [[ -z "$1" ]]; then\n  open http://localhost:#{@_port}\nelse\n  open http://localhost:#{@_port}$1\nfi")}
       FileUtils.chmod 0755, "./open.sh", verbose: true
 
       File.open(file, "w"){|f| f.write("#GMAIL_USERNAME=asdf GMAIL_PASSWORD=asdf RAILS_ENV=development bundle exec rails s -p #{@_port}\nRAILS_ENV=development bundle exec rails s -p #{@_port}")}

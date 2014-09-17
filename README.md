@@ -85,7 +85,7 @@ Thanks to the node.js configuration supplied with the generator, Angular JS will
 mvim Gemfile
 ```
 
-Update the file
+content
 
 ```
 # Use jquery as the JavaScript library
@@ -126,20 +126,24 @@ rails generate angular_module pens
 
 Pull down Angular JS dependencies using Node.js
 
+If you haven't installed, Node.js yet, do so now before continuing.  If you are on a Mac, homebrew is your friend ('brew update; brew install node').
+
 ```
 npm install
 npm run preprotractor
 ```
 
-Running the angular_module generator should create a couple of convenience scripts (useful only in Unix-like environments).
+Running the angular_module generator should, among other resources, create a couple of convenience scripts (useful only in Unix-like environments).
 
-* ./start.sh
-* ./open.sh
+* ./start.sh : start up the web server
+* ./open.sh : open the home page in a web browser
 
 Run the Tests
 =============
 
-Both unit and end-to-end (e2e) tests should be provided with any generated Angular JS module.  You will need to have the web application running on the same port as configured in the ```protractor-conf.js``` files for the end-to-end tests to pass.
+Both unit and end-to-end (e2e) tests should be provided with any generated Angular JS module.  
+
+_You will need to have the web application running on the same port as configured in the ```protractor-conf.js``` files for the end-to-end tests to pass._
 
 Run all unit tests
 
@@ -195,7 +199,7 @@ Update the associated model spec.
 mvim spec/models/widget_spec.rb
 ```
 
-Content
+content
 
 ```
   require 'rails_helper'
@@ -239,7 +243,7 @@ Update the model to satisfy the test
 mvim app/models/widget.rb
 ```
 
-Content
+content
 
 ```
   validates :name, presence: true, uniqueness: { case_sensitive: false }
@@ -263,7 +267,7 @@ Seed the database
 mvim db/seeds.rb
 ```
 
-Content
+content
 
 ```
 Widget.create!(name: "autotonsorialist")
@@ -275,13 +279,13 @@ Widget.create!(name: "recumbentibus")
 Widget.create!(name: "witzelsucht")
 ```
 
-Seed the database
+Create default records.
 
 ```
 rake db:seed
 ```
 
-Detach the Static Files; Use the Database
+Detach the Static Files; Use RESTful calls
 ===========================================
 
 Remove static widget data
@@ -326,7 +330,7 @@ to
   end
 ```
 
-If you want to view the widgets service via html, you may want to configure the layout to ```'static_pages'```.  This is not necessary for the RESTful service.
+If you want to view the widgets service via html, you may want to configure the layout to ```'static_pages'```.  This is not necessary for the RESTful service itself.
 
 ```
 class WidgetsController < ApplicationController
@@ -334,7 +338,7 @@ class WidgetsController < ApplicationController
   ...
 ```
 
-Restart the server and navigate to the widget Angular JS module.
+Restart the server and navigate to the Angular JS module, "widget".
 
 ```
 ./start.sh
@@ -370,7 +374,7 @@ end
 
 Update the JSON builders
 
-[app/views/widgets/index.json.jbuilder]
+_app/views/widgets/index.json.jbuilder_
 
 from
 
@@ -384,7 +388,7 @@ to
   json.extract! widget, :id, :name, :imageUrl
 ```
 
-[app/views/widgets/show.json.jbuilder]
+_app/views/widgets/show.json.jbuilder_
 
 from
 
@@ -398,12 +402,12 @@ to
 json.extract! @widget, :id, :name, :imageUrl, :created_at, :updated_at
 ```
 
-Restart the server and navigate to the widget Angular JS module.  The images should be showing up now.  Select one of the entries.  Where are the images?  We can get them with a few more changes.
+Restart the server and navigate to the Angular JS module, "widget".  The images should be showing up now.  Select one of the entries to get the detailed view.  Where are the images for the detailed view?  We can get them with a few more changes.
 
 Add Images to the Detail View
 ===========================================
 
-[app/assets/widgets/widgets/javascripts/services.js]
+_app/assets/widgets/widgets/javascripts/services.js_
 
 from
 
@@ -426,10 +430,10 @@ to
     });
 ```
 
-The RESTful urls are not similar enough to share the same ```$resource``` definition, so they are separated.  The ```url``` is overridden in the ```list``` action to specify the service to retrieve a list of all widgets.  The ```show``` action transforms the response to include an ```images``` array which is currently not part of the Rails resource json builder, but is referenced in the ```widget-detail.html``` template.
+The RESTful urls are not similar enough to share the same ```$resource``` definition, so they are now separated.  The ```url``` is overridden in the ```list``` action to specify the service to retrieve a list of all widgets.  The ```show``` action transforms the response to include an ```images``` array which is currently not part of the Rails resource json builder, but is referenced in the ```widget-detail.html``` template.
 
 
-[app/assets/widgets/widgets/javascripts/controllers.js]
+_app/assets/widgets/widgets/javascripts/controllers.js_
 
 from
 
@@ -465,12 +469,12 @@ to
 
 The ```query``` action name seems too vague.  By changing the actions to ```list``` and ```show```, more clarity is brought to the code.
 
-Restart the server and navigate to the widget Angular JS module.  Select one of the entries.  An image should now be displayed on the ```widget-detail.html``` template.
+Restart the server and navigate to the Angular JS module, "widget".  Select one of the entries.  An image should now be displayed on the ```widget-detail.html``` template.
 
 Where to Go From Here
 =====================
 
-There are a few things left to make the db-driven widgets Angular JS module to be more compliant with the other static-file-driven Angular JS modules.
+There are a few things left to make the db-driven "widgets" Angular JS module to be more compliant with the other static-file-driven Angular JS modules.
 
 Missing attributes
 
@@ -494,3 +498,6 @@ Part of the fun of this endeavor was to learn how to use Rails generators
 * http://lostechies.com/derickbailey/2011/04/29/writing-a-thor-application/
 * http://api.rubyonrails.org/classes/Rails/Generators/Base.html
 * http://rubydoc.info/github/wycats/thor/master/Thor/Shell/Basic (~/.rvm/gems/ruby-2.1.0/gems/thor-0.19.1/lib/thor/shell/basic.rb)
+
+I used real words instead of simply using Lorem Ipsum
+* http://users.tinyonline.co.uk/gswithenbank/unuwords.htm
