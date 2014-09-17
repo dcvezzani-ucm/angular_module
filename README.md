@@ -479,3 +479,18 @@ Missing attributes
 
 The angular_module Rails generator is not intended to make full-fledged applications out of the box.  It aims to provide a quick framework that can be updated and manipulated and bring consistency to an application that uses Angular JS.
 
+Credits
+=======
+
+Much of the framework and examples (especially the unit test and e2e examples) came from here.
+
+https://www.honeybadger.io/blog/2013/12/11/beginners-guide-to-angular-js-rails
+
+Part of the fun of this endeavor was to learn how to use Rails generators
+
+* http://guides.rubyonrails.org/generators.html
+* http://whatisthor.com/
+* http://rubydoc.info/github/wycats/thor/master/Thor/Actions
+* http://lostechies.com/derickbailey/2011/04/29/writing-a-thor-application/
+* http://api.rubyonrails.org/classes/Rails/Generators/Base.html
+* ~/.rvm/gems/ruby-2.1.0/gems/thor-0.19.1/lib/thor/shell/basic.rb
