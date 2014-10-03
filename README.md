@@ -507,3 +507,5 @@ Part of the fun of this endeavor was to learn how to use Rails generators
 
 I used real words instead of simply using Lorem Ipsum for seeding the Wiget data.
 * http://users.tinyonline.co.uk/gswithenbank/unuwords.htm
+
+
